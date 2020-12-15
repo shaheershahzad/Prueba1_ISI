@@ -7,6 +7,8 @@ solicitudController.getAllSolicitudes = async (req, res) => {
 };
 
 solicitudController.createSolicitud = async (req, res) => {
+    console.log(req.body);
+    console.log(req.params);
     try {
         const solicitud = new solicitudModel({
             descripcionEquipo: req.body.descripcion,
