@@ -1,5 +1,5 @@
 <template>
-    <h1>Gestionar pasajeros</h1>
+    <h1>Gestionar niveles</h1>
 
 </template>
 

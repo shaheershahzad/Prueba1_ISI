@@ -2,13 +2,13 @@ Vue.Component('Navbar', {
 <template>
   <div class="navbar">
     <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">SIGEM</div>
+      <div class="d-flex align-center">siges</div>
 
       <v-tabs centered>
-        <v-tab to="/crearNaveNodriza">Crear Nave Nodriza </v-tab>
-        <v-tab to="/crearAeronave">Crear Aeronave </v-tab>
-        <v-tab to="/gestionarPasajeros"> Gestionar Pasajeros</v-tab>
-        <v-tab to="/revisarAeronave"> Revisar Aeronave </v-tab>
+        <v-tab to="/darDeAltaSolicitud">Dar de alta nueva solicitud</v-tab>
+        <v-tab to="/aprobarSolicitud">Aprobar solicitud</v-tab>
+        <v-tab to="/gestionarNiveles">Gestionar niveles</v-tab>
+        <v-tab to="/promocionarFotografo">Promocionar fotografo</v-tab>
       </v-tabs>
     </v-app-bar>
 
