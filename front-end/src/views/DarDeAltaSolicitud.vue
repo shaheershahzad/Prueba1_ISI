@@ -22,7 +22,7 @@
         </template>
       </v-col>
       <v-col class="pa-4"
-        ><h1>Crear nave nodriza</h1>
+        ><h1>Crear solicitud</h1>
         <v-text-field
           v-model="descripcionEquipo"
           label="Descripcion equipo"
@@ -75,17 +75,16 @@ mounted(){
 
   methods: {
     anadirSolicitud() {
-      var id = this.idNaveNueva;
-      var nombre = this.nombreNaveNueva;
-      this.guardandoNave = true;
-      crudNaveNodriza.crearNaveNodriza(
-        id,
-        nombre,
+      this.anadiendoSolicitud = true;
+      crud.crearSolicitud(
+        this.descripcionEquipo,
+    this.resumenCV,
+    this.idFotografo,
         () => {
           this.anadiendoSolicitud = false;
-          //this.navesNodrizas.push(new NaveNodriza(id, nombre));
+          //this..push(new (id, nombre));
         },
-        (error) => {}
+        (error) => {this.anadiendoSolicitud = false;}
       );
     },
   },
