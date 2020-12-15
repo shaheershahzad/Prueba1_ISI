@@ -1,6 +1,11 @@
 const solicitudModel = require("../models/solicitud.model");
 const solicitudController = {};
 
+solicitudController.getAllSolicitudes = async (req, res) => {
+    const allSolicitudes = await solicitudModel.find();
+    res.json(allSolicitudes);
+};
+
 solicitudController.createSolicitud = async (req, res) => {
     try {
         const solicitud = new solicitudModel({

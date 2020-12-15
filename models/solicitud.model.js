@@ -17,7 +17,8 @@ const solicitudSchema = new Schema({
     estado: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        default: "pendiente"
     }
 },
 {

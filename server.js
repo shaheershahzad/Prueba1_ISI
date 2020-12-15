@@ -5,6 +5,8 @@ const PORT = 3000;
 //Rutas
 //Solicitud
 const solicitudRoutes = require("./routes/solicitud.routes");
+//Fotografo
+const fotografoRoutes = require("./routes/fotografo.routes");
 
 // Settings -> Configuración del servidor
 const morgan = require("morgan");
@@ -27,5 +29,6 @@ app.get("/", (req, res) => res.send("Server marcianos!"));
 //Usar rutas
 app.use(router);
 app.use('/api/solicitud', solicitudRoutes);
+app.use('/api/fotografo', fotografoRoutes);
 
 app.listen(PORT, () => console.log("Server on port 3000"));
