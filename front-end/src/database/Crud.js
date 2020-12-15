@@ -12,7 +12,12 @@ export function crearSolicitud(descripcionEquipo,resumenCV,idFotografo,onSuccess
 
     //setTimeout(()=>{onSuccess()},1000);
     console.log(message)
-    axios.post('http://localhost:3000/api/solicitud/', message)
+    axios.post('http://localhost:3000/api/solicitud/', {
+      descripcion: descripcionEquipo,
+      resumen: resumenCV,
+      estado: idFotografo
+
+    })
       .then(function (response) {
         onSuccess();
       })
