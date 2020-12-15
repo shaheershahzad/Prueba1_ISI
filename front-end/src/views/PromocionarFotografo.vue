@@ -1,5 +1,6 @@
 <template>
-  <h1>Crear aeronave</h1>
+    <h1>Promocionar Fotografo</h1>
+
 </template>
 
 <script>

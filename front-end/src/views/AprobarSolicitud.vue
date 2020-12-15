@@ -1,6 +1,5 @@
 <template>
-    <h1>Revisar aeronave</h1>
-
+  <h1>AprobarSolicitud</h1>
 </template>
 
 <script>

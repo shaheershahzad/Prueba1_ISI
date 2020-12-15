@@ -1,32 +1,32 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import CrearNaveNodriza from "./views/CrearNaveNodriza.vue";
-import CrearAeronave from "./views/CrearAeronave.vue";
-import GestionarPasajeros from "./views/GestionarPasajeros.vue";
-import RevisarAeronave from "./views/RevisarAeronave.vue";
+import DarDeAltaSolicitud from "./views/DarDeAltaSolicitud.vue";
+import AprobarSolicitud from "./views/AprobarSolicitud.vue";
+import GestionarNiveles from "./views/GestionarNiveles.vue";
+import PromocionarFotografo from "./views/PromocionarFotografo.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
       {
-        path: "/crearNaveNodriza",
-        name: "crearNaveNodriza",
-        component: CrearNaveNodriza,
+        path: "/darDeAltaSolicitud",
+        name: "darDeAltaSolicitud",
+        component: DarDeAltaSolicitud,
       },
       {
-        path: "/crearAeronave",
-        name: "crearAeronave",
-        component: CrearAeronave,
+        path: "/aprobarSolicitud",
+        name: "aprobarSolicitud",
+        component: AprobarSolicitud,
       },
       {
-        path: "/gestionarPasajeros",
-        name: "gestionarPasajeros",
-        component: GestionarPasajeros,
+        path: "/gestionarNiveles",
+        name: "gestionarNiveles",
+        component: GestionarNiveles,
       },
       {
-        path: "/revisarAeronave",
-        name: "revisarAeronave",
-        component: RevisarAeronave,
+        path: "/promocionarFotografo",
+        name: "promocionarFotografo",
+        component: PromocionarFotografo,
       },
     
 ];
