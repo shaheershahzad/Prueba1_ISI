@@ -10,8 +10,7 @@ solicitudController.createSolicitud = async (req, res) => {
     try {
         const solicitud = new solicitudModel({
             descripcionEquipo: req.body.descripcion,
-            resumenCV: req.body.resumen,
-            estado: req.body.estado
+            resumenCV: req.body.resumen
         });
         let savedSolicitud = await solicitud.save();
         res.json({
@@ -22,6 +21,14 @@ solicitudController.createSolicitud = async (req, res) => {
         console.log('err' + error);
         res.status(500).send(error);
     }
+};
+
+solicitudController.updateEstado = async (req, res) => {
+
+    await solicitudModel.findByIdAndUpdate(req.params.id, {$set: { estado : req.body.estado }});
+    res.json({
+        "status":"Estado updated to " + req.body.estado
+    });
 };
 
 module.exports = solicitudController;
