@@ -23,21 +23,9 @@
               Fescripcion equipo: {{ item.descripcionEquipo }}
             </div>
             <v-row>
-              <v-btn
-                block
-                :loading="anadiendoSolicitud"
-                @click="aceptarSolicitud(item.id)"
-              >
-                Aceptar
-              </v-btn>
+              <v-btn @click="aceptarSolicitud(item._id)"> Aceptar </v-btn>
 
-              <v-btn
-                block
-                :loading="anadiendoSolicitud"
-                @click="anadirSolicitud(item.id)"
-              >
-                Rechazar
-              </v-btn>
+              <v-btn @click="rechazarSolicitud(item._id)"> Rechazar </v-btn>
             </v-row>
           </v-card>
         </template>
@@ -63,16 +51,36 @@ export default {
     );
   },
 
-
-
   methods: {
     rechazarSolicitud(solicitudId) {
-      console.log(solicitudId)
+      console.log(solicitudId);
+      crud.rechazarSolicitud(
+        solicitudId,
+        () => {
+          crud.obtenerSolicitudesQueAprobar(
+            (listaSolicitudes) => {
+              this.historicoSolicitudes = listaSolicitudes;
+            },
+            (error) => {}
+          );
+        },
+        (error) => {}
+      );
     },
 
     aceptarSolicitud(solicitudId) {
-            console.log(solicitudId)
-
+      crud.aceptarSolicitud(
+        solicitudId,
+        () => {
+          crud.obtenerSolicitudesQueAprobar(
+            (listaSolicitudes) => {
+              this.historicoSolicitudes = listaSolicitudes;
+            },
+            (error) => {}
+          );
+        },
+        (error) => {}
+      );
     },
   },
 };

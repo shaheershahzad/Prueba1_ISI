@@ -1,6 +1,6 @@
 export default class Solicitud {
-    constructor(id, createdDate,descripcion,resumenCV,estado,dniFotografo) {
-      this.id=id,
+    constructor(_id, createdDate,descripcion,resumenCV,estado,dniFotografo) {
+      this._id=_id,
       this.createdDate = createdDate,
       this.descripcionEquipo = descripcion;
       this.resumenCV = resumenCV;

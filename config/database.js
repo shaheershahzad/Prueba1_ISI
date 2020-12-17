@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const URI = "mongodb://localhost/prueba1ISI";
-//const URI = "mongodb://root:example@localhost:27018/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false";
+//const URI = "mongodb://localhost/prueba1ISI";
+const URI = "mongodb://root:example@localhost:27018/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false";
 
 module.exports = () => {
     mongoose.connect(URI, { useNewUrlParser: true, useFindAndModify: false })

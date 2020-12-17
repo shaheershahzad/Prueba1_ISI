@@ -50,30 +50,80 @@ export function crearFotografo(dni, nombre, apellidos, direccion, ciudad, codigo
 
 }
 
+export function rechazarSolicitud(idSolicitud,onSuccess,onError) {
+
+  axios.put('http://localhost:3000/api/solicitud/updateEstado', {
+    id: idSolicitud,
+    estado: "rechazado",
+  })
+    .then(function (response) {
+      onSuccess();
+    })
+    .catch(function (error) {
+      console.log(error);
+      onError(error);
+    });
+
+}
+
+export function aceptarSolicitud(idSolicitud,onSuccess,onError) {
+
+  axios.put('http://localhost:3000/api/solicitud/updateEstado', {
+    id: idSolicitud,
+    estado: "aceptado",
+  })
+    .then(function (response) {
+      onSuccess();
+    })
+    .catch(function (error) {
+      console.log(error);
+      onError(error);
+    });
+
+}
+
 import Solicitud from "../objects/solicitud.js";
 import Fotografo from "../objects/fotografo.js";
 
 export function obtenerSolicitudes(onSuccess, onError) {
 
-  setTimeout(() => {
+  /* setTimeout(() => {
     onSuccess([
       new Solicitud("1", new Date(),"descrip1", "resumenCV", "pendiente","dnifoto"),
       new Solicitud("2", new Date(),"descrip1", "resumenCV", "pendiente","dnifoto"),
       new Solicitud("3", new Date(),"descrip1", "resumenCV", "pendiente","dnifoto"),
     ])
-  }, 1000);
-
+  }, 1000); */
+  axios.get('http://localhost:3000/api/solicitud/', { })
+    .then(function (response) {
+      console.log(response.data);
+      onSuccess(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+      onError(error);
+    });
 }
 
 export function obtenerSolicitudesQueAprobar(onSuccess, onError) {
 
-  setTimeout(() => {
+  /* setTimeout(() => {
     onSuccess([
       new Solicitud("1", new Date(), "descrip1","resumenCV", "pendiente","dnifoto"),
       new Solicitud("2", new Date(),"descrip1", "resumenCV", "pendiente","dnifoto"),
       new Solicitud("3", new Date(),"descrip1", "resumenCV", "pendiente","dnifoto"),
     ])
-  }, 1000);
+  }, 1000); */
+
+  axios.get('http://localhost:3000/api/solicitud/pending', { })
+    .then(function (response) {
+      console.log(response.data);
+      onSuccess(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+      onError(error);
+    });
 
 }
 
