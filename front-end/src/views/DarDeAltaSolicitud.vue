@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container >
     <v-row no-gutters
       ><v-col class="pa-4"
         ><h1>Historico solicitudes</h1>
@@ -21,7 +21,7 @@
         </v-virtual-scroll>
         </template>
       </v-col>
-      <v-col class="pa-4"
+      <v-col class="ma-5"
         ><h1>Crear solicitud</h1>
         <v-text-field
           v-model="descripcionEquipo"
@@ -123,8 +123,10 @@
           >
             Cerrar
           </v-btn>
-          <v-btn
+          <div > </div>
+          <v-btn 
             color="blue darken-1"
+            style="margin-top:1em"
             text
             @click="crearFotografo"
           >
@@ -181,7 +183,7 @@ mounted(){
       crud.crearSolicitud(
         this.descripcionEquipo,
     this.resumenCV,
-    this.idFotografo,
+    this.fotografoSeleccionado.dni,
         () => {
           this.anadiendoSolicitud = false;
           //this..push(new (id, nombre));

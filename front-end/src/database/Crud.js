@@ -57,9 +57,21 @@ export function obtenerSolicitudes(onSuccess, onError) {
 
   setTimeout(() => {
     onSuccess([
-      new Solicitud("1", new Date(), "resumenCV", "pendiente"),
-      new Solicitud("2", new Date(), "resumenCV", "pendiente"),
-      new Solicitud("3", new Date(), "resumenCV", "pendiente"),
+      new Solicitud("1", new Date(),"descrip1", "resumenCV", "pendiente","dnifoto"),
+      new Solicitud("2", new Date(),"descrip1", "resumenCV", "pendiente","dnifoto"),
+      new Solicitud("3", new Date(),"descrip1", "resumenCV", "pendiente","dnifoto"),
+    ])
+  }, 1000);
+
+}
+
+export function obtenerSolicitudesQueAprobar(onSuccess, onError) {
+
+  setTimeout(() => {
+    onSuccess([
+      new Solicitud("1", new Date(), "descrip1","resumenCV", "pendiente","dnifoto"),
+      new Solicitud("2", new Date(),"descrip1", "resumenCV", "pendiente","dnifoto"),
+      new Solicitud("3", new Date(),"descrip1", "resumenCV", "pendiente","dnifoto"),
     ])
   }, 1000);
 
