@@ -6,6 +6,11 @@ solicitudController.getAllSolicitudes = async (req, res) => {
     res.json(allSolicitudes);
 };
 
+solicitudController.getSolicitudesPendientes = async (req, res) => {
+    const solicitudesPendientes = await solicitudModel.find({"estado": "pendiente"});
+    res.json(solicitudesPendientes);
+};
+
 solicitudController.createSolicitud = async (req, res) => {
     console.log(req.body);
     console.log(req.params);
