@@ -35,16 +35,105 @@
           required
         ></v-text-field>
 
-<v-text-field
-          v-model="idFotografo"
-          label="Id fotografo"
+        <v-select
+          v-model="fotografoSeleccionado"
+          :items="listaFotografos"
+          item-text="nombre"
+          item-value="dni"
+          label="Fotografo"
+          return-object
+
           required
-        ></v-text-field>
+        ></v-select>
+                <template v-if="listaFotografos==null"> <v-progress-circular indeterminate color="primary"></v-progress-circular></template>
 
         <template>
           <v-btn block :loading="anadiendoSolicitud" @click="anadirSolicitud">
             Guardar
           </v-btn>
+
+          
+
+    <v-dialog
+      v-model="dialog"
+    
+      max-width="600px"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          Crear fotografo
+        </v-btn>
+      </template>
+      <v-card>
+        <v-card-title>
+          <span class="headline">Crear fotografo</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+          <v-text-field
+          v-model="dniFotografo"
+          label="DNI"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="nombreFotografo"
+          label="Nombre"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="apellidosFotografo"
+          label="Apellidos fotografo"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="direccionFotografo"
+          label="Direccion"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="ciudadFotografo"
+          label="Ciudad"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="codigoPostalFotografo"
+          label="Codigo postal"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="telefonoFotografo"
+          label="Telefono"
+          required
+        ></v-text-field>
+                
+          </v-container>
+          <small>*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="dialog = false"
+          >
+            Cerrar
+          </v-btn>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="crearFotografo"
+          >
+            Crear fotografo
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
         </template></v-col
       ></v-row
     ></v-container
@@ -61,14 +150,26 @@ import * as crud from "../database/Crud.js";
 export default {
   data: () => ({
     historicoSolicitudes: null,
+    listaFotografos: null,
+    fotografoSeleccionado: null,
     descripcionEquipo: "",
     resumenCV: "",
-    idFotografo:"",
+    dniFotografo:"",
+    nombreFotografo:"",
+    apellidosFotografo:"",
+    direccionFotografo:"",
+    ciudadFotografo:"",
+    codigoPostalFotografo:"",
+    telefonoFotografo:"",
+          dialog: false,
+
     anadiendoSolicitud: false,
   }),
 
 mounted(){
     crud.obtenerSolicitudes((listaSolicitudes)=>{this.historicoSolicitudes=listaSolicitudes},(error)=>{});
+
+    crud.obtenerFotografos((listaFotografos)=>{this.listaFotografos=listaFotografos},(error)=>{})
 
 
 },
@@ -76,6 +177,7 @@ mounted(){
   methods: {
     anadirSolicitud() {
       this.anadiendoSolicitud = true;
+      console.log(this.fotografoSeleccionado.dni)
       crud.crearSolicitud(
         this.descripcionEquipo,
     this.resumenCV,
@@ -86,6 +188,19 @@ mounted(){
         },
         (error) => {this.anadiendoSolicitud = false;}
       );
+    },
+
+    crearFotografo() {
+      crud.crearFotografo(this.dniFotografo,this.nombreFotografo,this.apellidosFotografo,
+      this.direccionFotografo,this.ciudadFotografo,this.codigoPostalFotografo,this.telefonoFotografo,() => {
+          //this.anadiendoSolicitud = false;
+          //this..push(new (id, nombre));
+          //var fotografo = new Fotografo
+          //this.listaFotografos.push(foto);
+              crud.obtenerFotografos((listaFotografos)=>{this.listaFotografos=listaFotografos},(error)=>{})
+
+          this.dialog=false;
+        },(error) => {})
     },
   },
 };
