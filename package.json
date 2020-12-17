@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server.js --ignore 'sigem/'",
-    "dev": "concurrently \"npm run server\""
+    "server": "nodemon server.js --ignore 'front-end/'",
+    "client": "npm run serve --prefix front-end",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
