@@ -14,6 +14,11 @@ const solicitudSchema = new Schema({
         required: true,
         trim: true
     },
+    dniFotografo: {
+        type: String,
+        required: true,
+        trim: true
+    },
     estado: {
         type: String,
         required: true,

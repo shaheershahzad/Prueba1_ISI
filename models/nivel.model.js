@@ -13,6 +13,11 @@ const nivelSchema = new Schema({
         type: Number,
         required: true,
         trim: true
+    },
+    nivel: {
+        type: Number,
+        required: true,
+        trim: true
     }
 },
 {
