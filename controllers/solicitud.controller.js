@@ -12,7 +12,8 @@ solicitudController.createSolicitud = async (req, res) => {
     try {
         const solicitud = new solicitudModel({
             descripcionEquipo: req.body.descripcion,
-            resumenCV: req.body.resumen
+            resumenCV: req.body.resumen,
+            dniFotografo: req.body.dniFotografo
         });
         let savedSolicitud = await solicitud.save();
         res.json({
