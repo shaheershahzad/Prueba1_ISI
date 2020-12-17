@@ -8,7 +8,7 @@ const solicitudRoutes = require("./routes/solicitud.routes");
 //Fotografo
 const fotografoRoutes = require("./routes/fotografo.routes");
 //Nivel
-//const nivelRoutes = require("./routes/nivel.routes");
+const nivelRoutes = require("./routes/nivel.routes");
 
 // Settings -> Configuración del servidor
 const morgan = require("morgan");
@@ -32,6 +32,6 @@ app.get("/", (req, res) => res.send("Server marcianos!"));
 app.use(router);
 app.use('/api/solicitud', solicitudRoutes);
 app.use('/api/fotografo', fotografoRoutes);
-//app.use('/api/nivel', nivelRoutes);
+app.use('/api/nivel', nivelRoutes);
 
 app.listen(PORT, () => console.log("Server on port 3000"));
