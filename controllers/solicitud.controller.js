@@ -6,6 +6,11 @@ solicitudController.getAllSolicitudes = async (req, res) => {
     res.json(allSolicitudes);
 };
 
+solicitudController.getSolicitudesPendientes = async (req, res) => {
+    const solicitudesPendientes = await solicitudModel.find({"estado": "pendiente"});
+    res.json(solicitudesPendientes);
+};
+
 solicitudController.createSolicitud = async (req, res) => {
     console.log(req.body);
     console.log(req.params);
@@ -28,7 +33,7 @@ solicitudController.createSolicitud = async (req, res) => {
 
 solicitudController.updateEstado = async (req, res) => {
 
-    await solicitudModel.findByIdAndUpdate(req.params.id, {$set: { estado : req.body.estado }});
+    await solicitudModel.findByIdAndUpdate(req.body.id, {$set: { estado : req.body.estado }});
     res.json({
         "status":"Estado updated to " + req.body.estado
     });
