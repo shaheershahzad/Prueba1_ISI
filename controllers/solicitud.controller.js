@@ -33,7 +33,7 @@ solicitudController.createSolicitud = async (req, res) => {
 
 solicitudController.updateEstado = async (req, res) => {
 
-    await solicitudModel.findByIdAndUpdate(req.params.id, {$set: { estado : req.body.estado }});
+    await solicitudModel.findByIdAndUpdate(req.body.id, {$set: { estado : req.body.estado }});
     res.json({
         "status":"Estado updated to " + req.body.estado
     });
